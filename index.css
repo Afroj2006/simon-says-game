@@ -1,47 +1,40 @@
 body {
   text-align: center;
-  background-color: #f2f2f2;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  margin-top: 30px;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(2, 160px);
-  grid-template-rows: repeat(2, 160px);
-  gap: 20px;
-  justify-content: center;
-  margin-top: 40px;
 }
 
 .btn {
+  height: 200px;
+  width: 200px;
   border-radius: 20%;
-  border: 6px solid black;
-  cursor: pointer;
-  transition: 0.15s;
+  border: 10px solid black;
+  margin: 1rem;
 }
 
-.red { background-color: #d95980; }
-.yellow { background-color: #f99b45; }
-.green { background-color: #63aac0; }
-.blue { background-color: #819ff9; }
-
-.pressed {
-  opacity: 0.6;
+.btn-container {
+  display: flex;
+  justify-content: center;
 }
 
-.game-over {
-  background-color: red;
+.red {
+  background-color: #d95980;
 }
 
-@media (max-width: 600px) {
-  .container {
-    grid-template-columns: repeat(2, 120px);
-    grid-template-rows: repeat(2, 120px);
-  }
+.yellow {
+  background-color: #f99b45;
+}
+
+.green {
+  background-color: #63aac0;
+}
+
+.purple {
+  background-color: #819ff9;
+}
+
+.flash {
+  background-color: white;
+}
+
+.userflash {
+  background-color: green;
 }

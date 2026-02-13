@@ -6,33 +6,31 @@ let btns = ["red", "yellow", "green", "purple"];
 let started = false;
 let level = 0;
 
-let h2 = document.querySelector("h2");
+let h2 = document.querySelector("#startText");
 
+h2.addEventListener("click", startGame);
+h2.addEventListener("touchstart", startGame);
 
-document.addEventListener("click", function () {
-    if (started === false) {
-        console.log("Game Started");
+function startGame() {
+    if (!started) {
         started = true;
         levelUp();
     }
-});
-
+}
 
 function gameFlash(btn) {
     btn.classList.add("flash");
     setTimeout(() => {
         btn.classList.remove("flash");
-    }, 250);
+    }, 300);
 }
-
 
 function userFlash(btn) {
     btn.classList.add("userflash");
     setTimeout(() => {
         btn.classList.remove("userflash");
-    }, 250);
+    }, 300);
 }
-
 
 function levelUp() {
     userSeq = [];
@@ -43,19 +41,15 @@ function levelUp() {
     let randColor = btns[randIdx];
     gameSeq.push(randColor);
 
-    console.log("Game Sequence:", gameSeq);
-
-    
     let delay = 0;
     for (let color of gameSeq) {
-        let btn = document.querySelector(`.${color}`);
+        let btn = document.querySelector(`#${color}`);
         setTimeout(() => {
             gameFlash(btn);
         }, delay);
         delay += 600;
     }
 }
-
 
 function checkAns(idx) {
     if (userSeq[idx] === gameSeq[idx]) {
@@ -66,13 +60,11 @@ function checkAns(idx) {
         h2.innerHTML = `
             Game Over! <br>
             Your Score: <b>${level - 1}</b> <br>
-            Press any key to restart
+            Tap heading to restart
         `;
-        console.log("Game Over! Final Score:", level - 1);
         reset();
     }
 }
-
 
 function btnPress() {
     if (!started) return;
@@ -80,15 +72,11 @@ function btnPress() {
     let btn = this;
     userFlash(btn);
 
-    let userColor = btn.getAttribute("id");
-    console.log("User clicked:", userColor);
-
+    let userColor = btn.id;
     userSeq.push(userColor);
-    console.log("User Sequence:", userSeq);
 
     checkAns(userSeq.length - 1);
 }
-
 
 function reset() {
     started = false;
@@ -99,6 +87,8 @@ function reset() {
 
 
 let allBtns = document.querySelectorAll(".btn");
+
 for (let btn of allBtns) {
     btn.addEventListener("click", btnPress);
+    btn.addEventListener("touchstart", btnPress);
 }

@@ -1,19 +1,24 @@
 body{
     text-align: center;
+    font-family: Arial, sans-serif;
 }
 
 .btn{
-    height: 200px;
-    width: 200px;
+    height: 180px;
+    width: 180px;
     border-radius: 20%;
-    border: 10px solid black;
+    border: 8px solid black;
     margin: 1rem;
+    cursor: pointer;
 }
 
 .btn-container{
     display: flex;
     justify-content: center;
+}
 
+.line-one, .line-two{
+    display: flex;
 }
 
 .red{
@@ -33,9 +38,9 @@ body{
 }
 
 .flash{
-    background-color: white;
+    background-color: white !important;
 }
 
 .userflash{
-    background-color: green;
+    background-color: green !important;
 }

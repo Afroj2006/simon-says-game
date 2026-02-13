@@ -8,8 +8,8 @@ let level = 0;
 
 let h2 = document.querySelector("h2");
 
-// 🔑 Game start on keypress
-document.addEventListener("keypress", function () {
+
+document.addEventListener("click", function () {
     if (started === false) {
         console.log("Game Started");
         started = true;
@@ -17,7 +17,7 @@ document.addEventListener("keypress", function () {
     }
 });
 
-// 💡 Game flash
+
 function gameFlash(btn) {
     btn.classList.add("flash");
     setTimeout(() => {
@@ -25,7 +25,7 @@ function gameFlash(btn) {
     }, 250);
 }
 
-// 💡 User flash
+
 function userFlash(btn) {
     btn.classList.add("userflash");
     setTimeout(() => {
@@ -33,7 +33,7 @@ function userFlash(btn) {
     }, 250);
 }
 
-// ⬆️ Level up logic
+
 function levelUp() {
     userSeq = [];
     level++;
@@ -45,7 +45,7 @@ function levelUp() {
 
     console.log("Game Sequence:", gameSeq);
 
-    // 🔥 FULL SEQUENCE FLASH
+    
     let delay = 0;
     for (let color of gameSeq) {
         let btn = document.querySelector(`.${color}`);
@@ -56,7 +56,7 @@ function levelUp() {
     }
 }
 
-// ✅ Answer check
+
 function checkAns(idx) {
     if (userSeq[idx] === gameSeq[idx]) {
         if (userSeq.length === gameSeq.length) {
@@ -73,7 +73,7 @@ function checkAns(idx) {
     }
 }
 
-// 🖱️ Button press
+
 function btnPress() {
     if (!started) return;
 
@@ -89,7 +89,7 @@ function btnPress() {
     checkAns(userSeq.length - 1);
 }
 
-// 🔄 Reset game
+
 function reset() {
     started = false;
     gameSeq = [];
@@ -97,7 +97,7 @@ function reset() {
     level = 0;
 }
 
-// 🔘 Add click listeners
+
 let allBtns = document.querySelectorAll(".btn");
 for (let btn of allBtns) {
     btn.addEventListener("click", btnPress);
